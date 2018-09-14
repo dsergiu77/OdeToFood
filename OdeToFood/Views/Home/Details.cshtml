@@ -1,0 +1,11 @@
+﻿@model OdeToFood.Models.Restaurant
+
+<body>
+    <div>
+        <h1>@Model.Id</h1>
+        <h1>@Model.Name</h1>
+        <p>Other details...</p>
+        @*<p>@Html.ActionLink("<- Home", "Index", "Home")</p>*@
+        <a asp-action="Index" asp-controller="Home">Turn Back Home</a>
+    </div>
+</body>
