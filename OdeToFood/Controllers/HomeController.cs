@@ -48,7 +48,8 @@ namespace OdeToFood.Controllers
         {
             if (this.ModelState.IsValid)
             {
-                var model = this.restaurantData.AddOrUpdate(input);
+                var model = this.restaurantData.Add(input);
+                this.restaurantData.SaveChanges();
 
                 return RedirectToAction(nameof(Details), new { id = model.Id });
             }
@@ -71,11 +72,13 @@ namespace OdeToFood.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Update(Restaurant input)
         {
             if (this.ModelState.IsValid)
             {
-                var model = this.restaurantData.AddOrUpdate(input);
+                var model = this.restaurantData.Update(input);
+                this.restaurantData.SaveChanges();
 
                 return RedirectToAction(nameof(Details), new { id = model.Id /*, foo = "bar"*/ }); // foo will be placed in the query string
             }

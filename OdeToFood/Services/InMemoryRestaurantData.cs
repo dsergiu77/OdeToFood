@@ -29,32 +29,34 @@ namespace OdeToFood.Services
             return list.FirstOrDefault(x => x.Id == id);
         }
 
-        public Restaurant AddOrUpdate(Restaurant input)
+        public Restaurant Add(Restaurant input)
         {
-            Restaurant item = null;
+            int nextId = list.Max(x => x.Id) + 1;
 
-            if (input.Id == 0)
+            input.Id = nextId;
+
+            var item = new Restaurant { Id = input.Id, Name = input.Name, Cuisine = input.Cuisine };
+            (list as List<Restaurant>).Add(item);
+
+            return item;
+        }
+
+        public Restaurant Update(Restaurant input)
+        {
+            // update
+            var item = list.FirstOrDefault(x => x.Id == input.Id);
+            if (item != null)
             {
-                // add
-                int nextId = list.Max(x => x.Id) + 1;
-
-                input.Id = nextId;
-
-                item = new Restaurant { Id = input.Id, Name = input.Name, Cuisine = input.Cuisine };
-                (list as List<Restaurant>).Add(item);
-            }
-            else
-            {
-                // update
-                item = list.Where(x => x.Id == input.Id).FirstOrDefault();
-                if (item != null)
-                {
-                    item.Name = input.Name;
-                    item.Cuisine = input.Cuisine;
-                }
+                item.Name = input.Name;
+                item.Cuisine = input.Cuisine;
             }
 
             return item;
+        }
+
+        public void SaveChanges()
+        {
+            // do nothing - in memory data
         }
     }
 }

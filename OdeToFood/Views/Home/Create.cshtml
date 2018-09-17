@@ -3,8 +3,13 @@
 
 <h1>Create</h1>
 <form method="post">
-    <input type="text" id ="Name" name="Name" value="">
-    @*<input asp-for = "Name">*@
-    <select asp-for="Cuisine" asp-items="Html.GetEnumSelectList<CuisineType>()"></select>
+    <div>
+        <label asp-for="Name" />
+        <input asp-for="Name" />
+        <span asp-validation-for="Name"></span>
+    </div>
+    <div>
+        <select asp-for="Cuisine" asp-items="Html.GetEnumSelectList<CuisineType>()"></select>
+    </div>
     <input type="submit" name="Save" value="Save" />
 </form>

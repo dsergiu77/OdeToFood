@@ -12,6 +12,10 @@ namespace OdeToFood.Services
 
         Restaurant Get(int id);
 
-        Restaurant AddOrUpdate(Restaurant input);
+        Restaurant Add(Restaurant input);
+
+        Restaurant Update(Restaurant input);
+
+        void SaveChanges();
     }
 }
