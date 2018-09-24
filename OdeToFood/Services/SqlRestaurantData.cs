@@ -25,14 +25,9 @@ namespace OdeToFood.Services
 
         public Restaurant Update(Restaurant input)
         {
-            var item = context.Restaurants.FirstOrDefault(x => x.Id == input.Id);
-            if (item != null)
-            {
-                item.Name = input.Name;
-                item.Cuisine = input.Cuisine;
-            }
+            context.Attach(input).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
 
-            return item;
+            return input;
         }
 
         public Restaurant Get(int id)
