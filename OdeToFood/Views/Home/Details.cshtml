@@ -1,5 +1,8 @@
-﻿@model OdeToFood.Models.Restaurant
+﻿@model Restaurant
 
+@{
+    ViewBag.Title = "Details for Restaurant " + Model.Id.ToString();
+}
 <body>
     <div>
         <h1>@Model.Id</h1>

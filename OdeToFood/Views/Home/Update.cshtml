@@ -1,10 +1,13 @@
-﻿@using OdeToFood.Models
-@model Restaurant
+﻿@model Restaurant
 
-<h1>Update</h1>
-<form method="post">
-    <input type="text" id="Name" name="Name" value="@Model.Name">
-    @*<input asp-for = "Name">*@
-    <select asp-for="Cuisine" asp-items="Html.GetEnumSelectList<CuisineType>()"></select>
-    <input type="submit" name="Save" value="Save" />
-</form>
+@{
+    ViewBag.Title = "Update " + Model.Id.ToString();
+}
+
+    <h1>Update</h1>
+    <form method="post">
+        <input type="text" id="Name" name="Name" value="@Model.Name">
+        @*<input asp-for = "Name">*@
+        <select asp-for="Cuisine" asp-items="Html.GetEnumSelectList<CuisineType>()"></select>
+        <input type="submit" name="Save" value="Save" />
+    </form>

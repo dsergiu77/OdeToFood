@@ -1,0 +1,9 @@
+﻿@page "{name}"
+@model GreetingModel
+@{
+    ViewData["Title"] = "Greeting";
+}
+@*@inject IGreeter Greeter
+    <h2>Greeting: @Greeter.GetMessageOfTheDay()</h2>*@
+
+<h2>@Model.CurrentMessage</h2>
